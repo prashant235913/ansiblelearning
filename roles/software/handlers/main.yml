@@ -1,0 +1,10 @@
+---
+- name: Restart Apache service
+  systemd:
+    name: apache2
+    state: restarted
+    enabled: yes
+
+- name: Show Website URL
+  debug:
+    msg: "Website URL: http://{{ ansible_host }}/success.html"

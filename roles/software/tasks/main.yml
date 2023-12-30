@@ -1,0 +1,25 @@
+---
+- name: Install Apache web server
+  package:
+    name: apache2
+    state: present
+
+- name: Copy website files
+  copy:
+    src: /home/prashant/ansiblelearning/success.html
+    dest: /var/www/html
+
+- name: Copy success page
+  copy:
+    src: /home/prashant/ansiblelearning/success.html
+    dest: /var/www/html
+  notify:
+    - Restart Apache service
+
+- name: Start Apache service
+  systemd:
+    name: apache2
+    state: started
+    enabled: yes
+
+
